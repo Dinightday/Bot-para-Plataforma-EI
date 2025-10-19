@@ -1,0 +1,7 @@
+pyperclip
+ast
+streamlit
+selenium
+langchain
+langchain-google-genai
+pyautogui
