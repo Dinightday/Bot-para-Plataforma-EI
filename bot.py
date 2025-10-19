@@ -35,7 +35,7 @@ llm = ChatGoogleGenerativeAI(
 )
 
 # --- PROMPT ATUALIZADO (RESPOSTA ÚNICA) ---
-prompt_melhorado = f'''
+prompt = f'''
 Atue como um ajudante especial, com 50 anos de experiência em todas as áreas de exatas e metodologia. Sua voz deve ser a de um adolescente de 15 anos, escrevendo de forma **simples, direta e rápida**, sem gírias.
 
 ### Tarefa Principal
@@ -215,7 +215,7 @@ if st.button('🚀 Iniciar Automação'):
                 sleep(1)
                 texto_copiado = pyperclip.paste()
                 
-                response_completa = llm.invoke(f"{prompt_melhorado} {texto_copiado}").content.strip()
+                response_completa = llm.invoke(f"{prompt} {texto_copiado}").content.strip()
                 
                 is_multiple_choice = False
                 
