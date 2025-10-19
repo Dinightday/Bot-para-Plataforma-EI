@@ -7,17 +7,21 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from langchain_google_genai import ChatGoogleGenerativeAI
-from dotenv import load_dotenv
 import pyperclip
 import os
-import ast # Importado para converter string em lista com segurança
+import ast
 
 # Carrega as variáveis de ambiente do arquivo .env
-load_dotenv()
+
 
 # --- Configuração do Modelo de Linguagem (LLM) ---
 # Pega a chave da API do Google do arquivo .env
-chave = os.getenv('google_api_key')
+try:
+    chave = st.secrets('GOOGLE_API_KEY')
+except TypeError:
+    from dotenv import load_dotenv
+    load_dotenv()
+    chave = os.getenv('GOOGLE_API_KEY')
 
 # Validação para garantir que a chave da API foi carregada
 if not chave:
